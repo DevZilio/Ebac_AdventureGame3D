@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public float gravity = 9.8f;
 
     public float jumpSpeed = 15f;
+    private float groundBufferTimer = 0f;
+    public float groundBufferDuration = 0.3f; // Tempo de buffer em segundos
 
     private float _vSpeed = 0f;
 
@@ -31,14 +33,20 @@ public class Player : MonoBehaviour
         var speedVector = transform.forward * inputAxiVertical * speed;
 
         //Jump
+          // Atualiza o temporizador do buffer de chão
         if (characterController.isGrounded)
         {
-            _vSpeed = 0;
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                _vSpeed = jumpSpeed;
-                
-            }
+            groundBufferTimer = groundBufferDuration;
+        }
+        else
+        {
+            groundBufferTimer -= Time.deltaTime;
+        }
+
+        // Permite pular mesmo se o jogador saiu do chão recentemente
+        if (groundBufferTimer > 0 && Input.GetKeyDown(KeyCode.Space))
+        {
+            _vSpeed = jumpSpeed;
         }
 
         animator.SetBool("Jump", characterController.isGrounded!= true);

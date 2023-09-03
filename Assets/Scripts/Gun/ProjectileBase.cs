@@ -22,10 +22,18 @@ public class ProjectileBase : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed); //Cria gameobject   
     }
 
-    private void OnCollisionEnter(Collision collision)
+   private void OnTriggerEnter(Collider collider)
     {
+        if (collider.CompareTag("Enemy"))
+        {
+            var damageable = collider.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.Damage(damageAmount);
+            }
 
-        
-
+            Destroy(gameObject);
+        }
     }
+
 }

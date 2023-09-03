@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3047850318048075362}
   - component: {fileID: 2568599374755728786}
+  - component: {fileID: 7942992673621815601}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -47,7 +48,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToDestroy: 2
   speed: 50
-  damageAmount: 1
+  damageAmount: 2
+--- !u!54 &7942992673621815601
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179829771148868910}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &5659109701258346943
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +76,7 @@ GameObject:
   - component: {fileID: 2595949285399335955}
   - component: {fileID: 339016122458534158}
   - component: {fileID: 1261699814128182244}
-  - component: {fileID: 8480342346189695191}
+  - component: {fileID: 6102888542152837270}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -132,7 +149,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8480342346189695191
+--- !u!135 &6102888542152837270
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,5 +160,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.55836844
   m_Center: {x: 0, y: 0, z: 0}

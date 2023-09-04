@@ -3006,6 +3006,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 126199270427736323, guid: 821152a3c61cd4c51829b2dbb0751403, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 126199270427736327, guid: 821152a3c61cd4c51829b2dbb0751403, type: 3}
       propertyPath: m_Name
       value: Enemy_01
@@ -6070,7 +6074,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226784703}
-  m_LocalRotation: {x: 0.13608082, y: -0.00000000852316, z: 0.000000001170729, w: 0.99069774}
+  m_LocalRotation: {x: 0.13608082, y: 0.000000008523162, z: -0.0000000011707292, w: 0.99069774}
   m_LocalPosition: {x: 403.39206, y: -1.0600004, z: 25.401428}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7464,7 +7468,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500100153}
-  m_LocalRotation: {x: 0.13608082, y: -0.00000000852316, z: 0.000000001170729, w: 0.99069774}
+  m_LocalRotation: {x: 0.13608082, y: 0.000000008523162, z: -0.0000000011707292, w: 0.99069774}
   m_LocalPosition: {x: 403.39206, y: -1.0600004, z: 25.401428}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12219,7 +12223,7 @@ PrefabInstance:
       objectReference: {fileID: 779858574}
     - target: {fileID: 8088920502724810181, guid: 5a508fa93572c4b39a162576b293ce84, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a508fa93572c4b39a162576b293ce84, type: 3}
@@ -12362,6 +12366,10 @@ PrefabInstance:
       propertyPath: meshRenderer
       value: 
       objectReference: {fileID: 1765635099}
+    - target: {fileID: 5994156995548731532, guid: 9f75c737454174148bf2a8b2eb75d336, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7726051590840801526, guid: 9f75c737454174148bf2a8b2eb75d336, type: 3}
       propertyPath: animator
       value: 

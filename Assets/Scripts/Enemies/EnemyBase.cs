@@ -9,11 +9,14 @@ namespace Enemy
     public class EnemyBase : MonoBehaviour, IDamageable
     {
         public float startLife = 10f;
-
         public float timeToDestroy = 2f;
         public Collider collider;
         public FlashColor flashColor;
         public ParticleSystem particleSystem;
+
+        public bool lookAtPlayer = false;
+
+        private Player _player;
 
         [SerializeField]
         private AnimationBase _animationBase;
@@ -31,6 +34,12 @@ namespace Enemy
         private void Awake()
         {
             Init();
+        }
+
+        private void Start() {
+            {
+              _player = GameObject.FindObjectOfType<Player>();  
+            }
         }
 
         protected void ResetLife()
@@ -53,7 +62,7 @@ namespace Enemy
 
         protected virtual void OnKill()
         {
-            if(collider != null) collider.enabled = false;
+            if (collider != null) collider.enabled = false;
             StartCoroutine(DestroyCoroutine());
             PlayAnimationByTrigger(AnimationType.DEATH);
         }
@@ -61,8 +70,10 @@ namespace Enemy
         public void OnDamage(float f)
         {
             {
-                if(flashColor != null) flashColor.Flash();
-                if(particleSystem != null) particleSystem.Emit(15);
+                if (flashColor != null) flashColor.Flash();
+                if (particleSystem != null) particleSystem.Emit(15);
+
+                transform.position -= transform.forward;
 
                 _currentLife -= f;
                 if (_currentLife <= 0)
@@ -73,24 +84,49 @@ namespace Enemy
         }
 
         //Debug
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                OnDamage(5f);
-                Debug.Log("damage");
-            }
-        }
+        // private void Update()
+        // {
+        //     if (Input.GetKeyDown(KeyCode.D))
+        //     {
+        //         OnDamage(5f);
+        //         Debug.Log("damage");
+        //     }
+        // }
 
         public void Damage(float damage)
         {
-            OnDamage(damage);
+            OnDamage (damage);
+        }
+
+        public void Damage(float damage, Vector3 dir)
+        {
+            OnDamage (damage);
+            transform.DOMove(transform.position - dir, .1f);
         }
 
         IEnumerator DestroyCoroutine()
         {
             yield return new WaitForSeconds(timeToDestroy);
             Destroy (gameObject);
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            PlayerLife p = collision.transform.GetComponent<PlayerLife>();
+
+            if (p != null)
+            {
+                p.Damage(1);
+            }
+        }
+
+        public virtual void Update()
+        {
+            if(lookAtPlayer)
+            {
+                transform.LookAt(_player.transform.position);
+            }
+
         }
 
 

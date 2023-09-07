@@ -4,19 +4,21 @@ using UnityEngine;
 
 namespace DevZilio.StateMachine
 {
-public class StateBase : MonoBehaviour
-{
-    public virtual void OnStateEnter(object o = null)
+    public class StateBase : MonoBehaviour
     {
-        Debug.Log("OnStateEnter");
+        public virtual void OnStateEnter(params object[] objs)
+        {
+            // Debug.Log("OnStateEnter");
+        }
+
+        public virtual void OnStateStay()
+        {
+            // Debug.Log("OnStateStay");
+        }
+
+        public virtual void OnStateExit()
+        {
+            // Debug.Log("OnStateExit");
+        }
     }
-    public virtual void OnStateStay()
-    {
-        Debug.Log("OnStateStay");
-    }
-    public virtual void OnStateExit()
-    {
-        Debug.Log("OnStateExit");
-    }
-}
 }

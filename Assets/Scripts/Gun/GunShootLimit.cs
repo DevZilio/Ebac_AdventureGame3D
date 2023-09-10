@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GunShootLimit : GunBase
 {
-    public List<UIGunUpdater> uiGunUpdaters;
+    public List<UIFillUpdater> uiGunUpdaters;
 
     public float maxShoot = 5;
 
@@ -14,6 +14,8 @@ public class GunShootLimit : GunBase
     private float _currentShoots;
 
     private bool _recharging = false;
+
+    public string nameUi;
 
 
     private void Awake()
@@ -79,6 +81,27 @@ public class GunShootLimit : GunBase
 
     private void GetAllUis()
     {
-        uiGunUpdaters = GameObject.FindObjectsOfType<UIGunUpdater>().ToList();
+       
+    // Substitua "NomeDoObjeto" pelo nome real do objeto que você deseja encontrar.
+    GameObject uiObject = GameObject.Find(nameUi);
+
+    if (uiObject != null)
+    {
+        UIFillUpdater uiFillUpdater = uiObject.GetComponent<UIFillUpdater>();
+        if (uiFillUpdater != null)
+        {
+            uiGunUpdaters.Add(uiFillUpdater);
+        }
+        else
+        {
+            Debug.LogError("UIFillUpdater component not found on object with name: " + uiObject.name);
+        }
+    }
+    else
+    {
+        Debug.LogError("Object with name: " + "NomeDoObjeto" + " not found.");
+    }
+
+
     }
 }

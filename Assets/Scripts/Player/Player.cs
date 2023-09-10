@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     public KeyCode keyRun = KeyCode.LeftShift;
     public float speedRun = 1.5f;
 
+ 
+
     void Start()
     {
         jumpsRemaining = maxJumps; // Defina o número inicial de pulos restantes como o máximo
@@ -69,4 +71,7 @@ public class Player : MonoBehaviour
 
         animator.SetBool("Run", isWalking);
     }
+
+
 }
+ 

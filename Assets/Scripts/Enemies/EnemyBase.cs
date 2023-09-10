@@ -83,15 +83,6 @@ namespace Enemy
             }
         }
 
-        //Debug
-        // private void Update()
-        // {
-        //     if (Input.GetKeyDown(KeyCode.D))
-        //     {
-        //         OnDamage(5f);
-        //         Debug.Log("damage");
-        //     }
-        // }
 
         public void Damage(float damage)
         {

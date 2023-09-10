@@ -42,11 +42,11 @@ public class HealthBase : MonoBehaviour, IDamageable
         OnKill?.Invoke(this);
     }
 
-    // [NaughtyAttributes.Button]
-    // public void Damage()
-    // {
-    //     Damage(5);
-    // }
+    [NaughtyAttributes.Button]
+    public void Damage()
+    {
+        Damage(5);
+    }
 
 #region DAMAGE
     public void OnDamage(float damage)
@@ -60,7 +60,7 @@ public class HealthBase : MonoBehaviour, IDamageable
         {
             Kill();
         }
-    }
+    } 
 
     public void Damage(float damage)
     {

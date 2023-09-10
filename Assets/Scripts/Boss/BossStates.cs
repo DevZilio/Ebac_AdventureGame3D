@@ -18,7 +18,6 @@ namespace Boss
 
     public class BossStateInit : BossStateBase
     {
-        public GameObject gameObject;
 
         public override void OnStateEnter(params object[] objs)
         {
@@ -74,7 +73,6 @@ namespace Boss
         {
             
             base.OnStateEnter(objs);
-            boss.transform.localScale = Vector3.one * .2f;
             
         }
 

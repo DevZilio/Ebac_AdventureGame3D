@@ -14,6 +14,8 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     public bool destroyOnKill = false;
 
+    public GameObject bossCamera;
+
     [SerializeField]
     private float _currentLife;
 
@@ -38,6 +40,7 @@ public class HealthBase : MonoBehaviour, IDamageable
     protected virtual void Kill()
     {
         if (destroyOnKill) Destroy(gameObject, 3f);
+        bossCamera.SetActive(false);
 
         OnKill?.Invoke(this);
     }
@@ -47,6 +50,7 @@ public class HealthBase : MonoBehaviour, IDamageable
     {
         Damage(5);
     }
+
 
 #region DAMAGE
     public void OnDamage(float damage)
@@ -60,7 +64,7 @@ public class HealthBase : MonoBehaviour, IDamageable
         {
             Kill();
         }
-    } 
+    }
 
     public void Damage(float damage)
     {

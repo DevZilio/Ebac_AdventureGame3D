@@ -15,12 +15,12 @@ public class Player : MonoBehaviour
     private int jumpsRemaining = 0; // Número de pulos restantes
 
     private float _vSpeed = 0f;
+    private float groundBufferTimer = 0f;
+    public float groundBufferDuration = 0.3f; // Tempo de buffer em segundos
 
     [Header("Run")]
     public KeyCode keyRun = KeyCode.LeftShift;
     public float speedRun = 1.5f;
-
- 
 
     void Start()
     {
@@ -39,10 +39,17 @@ public class Player : MonoBehaviour
         {
             _vSpeed = -0.5f; // Evita que o personagem "cole" ao chão
             jumpsRemaining = maxJumps; // Reinicia o número de pulos quando estiver no chão
+            groundBufferTimer = groundBufferDuration; // Reinicia o temporizador de buffer de chão
         }
         
+        // Atualiza o temporizador de buffer de chão
+        if (groundBufferTimer > 0)
+        {
+            groundBufferTimer -= Time.deltaTime;
+        }
+
         // Permite pular mesmo se o jogador saiu do chão recentemente e ainda tem pulos restantes
-        if (jumpsRemaining > 0 && Input.GetKeyDown(KeyCode.Space))
+        if ((jumpsRemaining > 0 || groundBufferTimer > 0) && Input.GetKeyDown(KeyCode.Space))
         {
             _vSpeed = jumpSpeed;
             jumpsRemaining--;
@@ -71,7 +78,4 @@ public class Player : MonoBehaviour
 
         animator.SetBool("Run", isWalking);
     }
-
-
 }
- 

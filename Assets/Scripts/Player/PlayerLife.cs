@@ -7,22 +7,25 @@ using UnityEngine;
 public class PlayerLife : MonoBehaviour, IDamageable
 {
     public List<FlashColor> flashColors;
+
     public List<Collider> colliders;
+
     public Animator animator;
 
-    // public ParticleSystem particleSystem;
+    public GameObject bossCamera;
 
+    // public ParticleSystem particleSystem;
     public float startLife = 10f;
+
     public float timeToDestroy = 1f;
 
     [SerializeField]
     private float _currentLife;
+
     private bool _alive = true;
 
     [Header("Life")]
     public UIFillUpdater uiLifeBarUpdater;
-
-    
 
     public void Awake()
     {
@@ -42,11 +45,12 @@ public class PlayerLife : MonoBehaviour, IDamageable
     protected virtual void Kill()
     {
         // if (destroyOnKill) Destroy(gameObject, timeToDestroy);
-        if(_alive)
+        if (_alive)
         {
             _alive = false;
             animator.SetTrigger("Death");
             colliders.ForEach(i => i.enabled = false);
+            bossCamera.SetActive(false);
 
             Invoke(nameof(Revive), 3f);
         }
@@ -58,14 +62,16 @@ public class PlayerLife : MonoBehaviour, IDamageable
         Damage(5);
     }
 
-#region DAMAGE
 
+#region DAMAGE
 
     public void OnDamage(float damage)
     {
         if (flashColors != null) flashColors.ForEach(i => i.Flash());
-        // if (particleSystem != null) particleSystem.Emit(15);
+        EffectsManager.Instance.ChangeVignette();
+        ShakeCamera.Instance.Shake();
 
+        // if (particleSystem != null) particleSystem.Emit(15);
         // transform.position -= transform.forward;
         _currentLife -= damage;
         if (_currentLife <= 0)
@@ -87,26 +93,29 @@ public class PlayerLife : MonoBehaviour, IDamageable
     }
 #endregion
 
-#region LIFE
-private void UpdateUI()
-{
-    if(uiLifeBarUpdater != null)
-    {
-        uiLifeBarUpdater.UpdateValue((float)_currentLife/startLife);
-        Debug.Log("Update PlayerLife");
-    }
-}
 
-[NaughtyAttributes.Button]
-    public void Respawn()
+
+#region LIFE
+    private void UpdateUI()
     {
-        if(CheckPointManager.Instance.HasCheckPoint())
+        if (uiLifeBarUpdater != null)
         {
-            transform.position = CheckPointManager.Instance.GetPositionFromLastCheckPoint();
+            uiLifeBarUpdater.UpdateValue((float) _currentLife / startLife);
+            Debug.Log("Update PlayerLife");
         }
     }
 
-[NaughtyAttributes.Button]
+    [NaughtyAttributes.Button]
+    public void Respawn()
+    {
+        if (CheckPointManager.Instance.HasCheckPoint())
+        {
+            transform.position =
+                CheckPointManager.Instance.GetPositionFromLastCheckPoint();
+        }
+    }
+
+    [NaughtyAttributes.Button]
     public void Revive()
     {
         _alive = true;
@@ -115,6 +124,7 @@ private void UpdateUI()
         animator.SetTrigger("Revive");
         colliders.ForEach(i => i.enabled = true);
     }
+
 
 #endregion
 

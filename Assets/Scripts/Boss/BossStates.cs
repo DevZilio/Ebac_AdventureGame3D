@@ -74,7 +74,7 @@ namespace Boss
             
             base.OnStateEnter(objs);
             
-            
+            boss.SwitchState(BossAction.DEATH);
         }
 
         

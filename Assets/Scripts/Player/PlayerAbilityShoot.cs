@@ -47,6 +47,7 @@ public class PlayerAbilityShoot : PlayerAbilityBase
     private void StartShoot()
     {
         _currentGun.StartShoot();
+        
         Debug.Log("Start Shoot");
     }
 

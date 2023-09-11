@@ -8,11 +8,6 @@ namespace Enemy
     { 
         public GunBaseEnemy gunBaseEnemy;
 
-        protected override void Init()
-        {
-            base.Init();
-
-            gunBaseEnemy.StartShoot();
-        }
+      
     }
 }

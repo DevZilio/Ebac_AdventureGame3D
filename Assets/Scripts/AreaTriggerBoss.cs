@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Boss
 {
-    public class AreaTrigger : MonoBehaviour
+    public class AreaTriggerBoss : MonoBehaviour
     {
         public BossBase boss;
         public MeshRenderer bossGraphic;
@@ -19,7 +19,7 @@ namespace Boss
             {
                 if (boss != null) bossGraphic.enabled = true;
                 if (boss != null) boss.SwitchState(BossAction.WALK);
-                Debug.Log("Trigger collided");
+                Debug.Log("Trigger boss collided");
             }
         }
     }

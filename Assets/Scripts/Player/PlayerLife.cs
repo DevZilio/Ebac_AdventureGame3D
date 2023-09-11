@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using DevZilio.Core.Singleton;
 
-public class PlayerLife : MonoBehaviour, IDamageable
+public class PlayerLife : Singleton<PlayerLife>, IDamageable
 {
     public List<FlashColor> flashColors;
 
@@ -27,8 +28,9 @@ public class PlayerLife : MonoBehaviour, IDamageable
     [Header("Life")]
     public UIFillUpdater uiLifeBarUpdater;
 
-    public void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         Init();
     }
 
@@ -40,6 +42,7 @@ public class PlayerLife : MonoBehaviour, IDamageable
     public void ResetLife()
     {
         _currentLife = startLife;
+        UpdateUI();
     }
 
     protected virtual void Kill()

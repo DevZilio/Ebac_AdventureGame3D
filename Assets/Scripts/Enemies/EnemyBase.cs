@@ -47,7 +47,7 @@ namespace Enemy
             _currentLife = startLife;
         }
 
-        protected virtual void Init()
+        public virtual void Init()
         {
             {
                 ResetLife();

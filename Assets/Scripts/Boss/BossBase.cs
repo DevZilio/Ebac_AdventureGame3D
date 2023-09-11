@@ -74,6 +74,7 @@ public virtual void Update()
         private void OnBossKill(HealthBase h)
         {
             SwitchState(BossAction.DEATH);
+            bossGunBase.StopShoot();
         }
 
 #region INIT

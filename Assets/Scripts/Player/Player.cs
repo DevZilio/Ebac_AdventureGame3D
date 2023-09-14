@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using DevZilio.Core.Singleton;
+using Cloth;
 using UnityEngine;
 
 public class Player : Singleton<Player>
@@ -22,6 +24,9 @@ public class Player : Singleton<Player>
     [Header("Run")]
     public KeyCode keyRun = KeyCode.LeftShift;
     public float speedRun = 1.5f;
+
+    [Header("Cloths")]
+    public ClothChanger clothChanger;
 
     void Start()
     {
@@ -78,5 +83,33 @@ public class Player : Singleton<Player>
         characterController.Move(speedVector * Time.deltaTime);
 
         animator.SetBool("Run", isWalking);
+    }
+
+
+
+
+    public void ChangeSpeed(float speed, float duration)
+    {
+        StartCoroutine(ChangeSpeedCoroutine(speed, duration));
+    }
+
+    IEnumerator ChangeSpeedCoroutine(float localspeed, float duration)
+    {
+        var defaultSpeed = speed;
+        speed = localspeed;
+        yield return new WaitForSeconds(duration);
+        speed = defaultSpeed;
+    }
+
+    public void ChangeTexture(ClothSetup setup, float duration)
+    {
+        StartCoroutine(ChangeTexctureCoroutine(setup, duration));
+    }
+
+    IEnumerator ChangeTexctureCoroutine(ClothSetup setup, float duration)
+    {
+        clothChanger.ChangeTexture(setup, duration);
+        yield return new WaitForSeconds(duration);
+        clothChanger.ResetTexture();
     }
 }

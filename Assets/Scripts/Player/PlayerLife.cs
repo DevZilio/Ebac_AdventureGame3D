@@ -27,6 +27,7 @@ public class PlayerLife : Singleton<PlayerLife>, IDamageable
 
     [Header("Life")]
     public UIFillUpdater uiLifeBarUpdater;
+    public float damageMultiply = 1;
 
     protected override void Awake()
     {
@@ -76,7 +77,7 @@ public class PlayerLife : Singleton<PlayerLife>, IDamageable
 
         // if (particleSystem != null) particleSystem.Emit(15);
         // transform.position -= transform.forward;
-        _currentLife -= damage;
+        _currentLife -= damage * damageMultiply;
         if (_currentLife <= 0)
         {
             Kill();
@@ -130,5 +131,17 @@ public class PlayerLife : Singleton<PlayerLife>, IDamageable
 
 
 #endregion
+
+public void ChangeDamageMultiply(float damage, float duration)
+    {
+        StartCoroutine(ChangeDamageMultiplyCoroutine(damageMultiply, duration));
+    }
+
+    IEnumerator ChangeDamageMultiplyCoroutine(float damageMultiply, float duration)
+    {
+        this.damageMultiply = damageMultiply;
+        yield return new WaitForSeconds(duration);
+         this.damageMultiply = 1;
+    }
 
 }

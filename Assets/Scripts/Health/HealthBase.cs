@@ -77,4 +77,5 @@ public class HealthBase : MonoBehaviour, IDamageable
         transform.DOMove(transform.position - dir, .1f);
     }
 #endregion
+
 }

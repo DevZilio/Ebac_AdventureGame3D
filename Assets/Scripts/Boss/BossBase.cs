@@ -119,6 +119,18 @@ IEnumerator AttackCoroutine(Action endCallback)
     }
     endCallback?.Invoke();
 }
+
+//When player touchs the boss
+ private void OnCollisionEnter(Collision collision)
+        {
+            PlayerLife p = collision.transform.GetComponent<PlayerLife>();
+
+            if (p != null)
+            {
+                p.Damage(1);
+            }
+        }
+
 #endregion
 
 

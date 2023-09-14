@@ -101,6 +101,7 @@ namespace Enemy
             Destroy (gameObject);
         }
 
+//When player touchs enemy
         private void OnCollisionEnter(Collision collision)
         {
             PlayerLife p = collision.transform.GetComponent<PlayerLife>();

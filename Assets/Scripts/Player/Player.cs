@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using DevZilio.Core.Singleton;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>
 {
     [Header("Animation")]
     public Animator animator;

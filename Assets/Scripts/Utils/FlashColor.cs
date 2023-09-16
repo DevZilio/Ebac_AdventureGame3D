@@ -8,6 +8,8 @@ public class FlashColor : MonoBehaviour
    public MeshRenderer meshRenderer;
    public SkinnedMeshRenderer skinnedMeshRenderer;
 
+   public string colorParameter = "_EmissionColor";
+
 
 
    private Tween _currTween;
@@ -26,9 +28,9 @@ public class FlashColor : MonoBehaviour
    public void Flash()
    {
        if(meshRenderer != null && !_currTween.IsActive())
-       _currTween = meshRenderer.material.DOColor(color, "_EmissionColor", duration).SetLoops(2, LoopType.Yoyo);
+       _currTween = meshRenderer.material.DOColor(color, colorParameter, duration).SetLoops(2, LoopType.Yoyo);
        if(skinnedMeshRenderer != null && !_currTween.IsActive())
-       _currTween = skinnedMeshRenderer.material.DOColor(color, "_EmissionColor", duration).SetLoops(2, LoopType.Yoyo);
+       _currTween = skinnedMeshRenderer.material.DOColor(color, colorParameter, duration).SetLoops(2, LoopType.Yoyo);
        Debug.Log("Flash");
    }
 }

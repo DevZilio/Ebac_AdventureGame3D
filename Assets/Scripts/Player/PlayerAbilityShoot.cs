@@ -18,6 +18,8 @@ public class PlayerAbilityShoot : PlayerAbilityBase
     public GunBase gun2Prefab; // Second gun
     public GunBase gun3Prefab; // Third gun
 
+    public FlashColor flashColorGun;
+
  
 
     private int selectedWeapon = 1; // 1 to first gun, 2 to second gun, 3 to third gun
@@ -47,6 +49,7 @@ public class PlayerAbilityShoot : PlayerAbilityBase
     private void StartShoot()
     {
         _currentGun.StartShoot();
+        flashColorGun?.Flash();
         
         Debug.Log("Start Shoot");
     }

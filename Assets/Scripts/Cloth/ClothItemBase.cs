@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DevZilio.Core.Singleton;
 
 namespace Cloth
 {
-    public class ClothItemBase : MonoBehaviour
+    public class ClothItemBase : Singleton<ClothItemBase>
     {
         public ClothType clothType;
         public string compareTag = "Player";

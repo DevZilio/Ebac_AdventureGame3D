@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckPointBase : MonoBehaviour
 {
@@ -41,11 +42,22 @@ public class CheckPointBase : MonoBehaviour
 
     private void SaveCheckPoint()
     {
-        // if(PlayerPrefs.GetInt(_checkPointKey, 0)>key)
-        //     PlayerPrefs.SetInt(_checkPointKey, key);
 
         CheckPointManager.Instance.SaveCheckPoint(key);
         
         checkPointActived = true;
+
+         // Salva as informações no SaveManager
+    SaveManager.Instance.SaveItems(); // Salva moedas e saúde
+    SaveManager.Instance.SaveLastCheckPoint(); // Salva o último checkpoint
+
+      // Atualiza o número do nível atual
+        int currentLevel = SceneManager.GetActiveScene().buildIndex;
+    SaveManager.Instance.SaveLastLevel(currentLevel); // Salva o último nível
+
+    // Chama o método Save() para salvar todas as informações
+    SaveManager.Instance.Save();
+
+    Debug.Log("Save game on checkpoint");
     }
 }

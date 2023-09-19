@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using Items;
 
+
 public class ChestItemCoin : ChestItemBase
 {
     public int coinNumber = 5;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cloth;
 using UnityEngine;
 
+
 namespace Cloth
 {
     public class ClothItemStrong : ClothItemBase

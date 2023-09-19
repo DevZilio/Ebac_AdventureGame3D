@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using Animation;
 using DG.Tweening;
 using UnityEngine;
@@ -30,6 +31,12 @@ namespace Enemy
         public Ease startAnimationEase = Ease.OutBack;
 
         public bool startWithBornAnimation = true;
+        
+        [Header("Events")]
+        public UnityEvent OnKillEvent;
+
+
+
 
         private void Awake()
         {
@@ -65,6 +72,7 @@ namespace Enemy
             if (collider != null) collider.enabled = false;
             StartCoroutine(DestroyCoroutine());
             PlayAnimationByTrigger(AnimationType.DEATH);
+            OnKillEvent?.Invoke();
         }
 
         public void OnDamage(float f)

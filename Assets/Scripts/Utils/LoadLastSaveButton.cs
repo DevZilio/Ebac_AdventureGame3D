@@ -15,11 +15,17 @@ public class LoadLastSaveButton : MonoBehaviour
         // Carrega a cena do último nível (certifique-se de que a cena tenha o mesmo índice do número do nível)
         SceneManager.LoadScene(lastLevel);
 
-        // Encontra o objeto do jogador (Player) e chama a função Respawn para posicionar o jogador no último checkpoint
-        PlayerLife  player = FindObjectOfType<PlayerLife>();
+        // Encontra o objeto do jogador (Player) na cena atual
+        PlayerLife player = FindObjectOfType<PlayerLife>();
+
         if (player != null)
         {
+            // Defina a posição do jogador com base no último checkpoint
             player.Respawn();
+        }
+        else
+        {
+            Debug.LogWarning("Player not found in the scene.");
         }
     }
 }

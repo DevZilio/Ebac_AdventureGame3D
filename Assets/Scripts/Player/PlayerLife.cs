@@ -116,6 +116,7 @@ public class PlayerLife : Singleton<PlayerLife>, IDamageable
         {
             transform.position =
                 CheckPointManager.Instance.GetPositionFromLastCheckPoint();
+                Debug.Log("Respawned at checkpoint " + CheckPointManager.Instance.lastCheckPointKey);
         }
     }
 
@@ -145,3 +146,4 @@ public void ChangeDamageMultiply(float damage, float duration)
     }
 
 }
+ 

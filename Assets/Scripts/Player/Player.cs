@@ -112,4 +112,31 @@ public class Player : Singleton<Player>
         yield return new WaitForSeconds(duration);
         clothChanger.ResetTexture();
     }
+
+
+public void LoadLastSave()
+{
+    if (SaveManager.Instance.Setup != null)
+    {
+        // Carregue as informações relevantes do SaveManager
+        int lastLevel = SaveManager.Instance.Setup.lastLevel;
+        int lastCheckpointKey = SaveManager.Instance.Setup.lastChekPoint;
+        float playerHealth = SaveManager.Instance.Setup.health;
+        float playerCoins = SaveManager.Instance.Setup.coins;
+
+        // Ajuste as informações do jogador de acordo com o carregamento
+        // Por exemplo, você pode atualizar a posição, saúde e moedas aqui
+        transform.position = CheckPointManager.Instance.GetPositionFromLastCheckPoint();
+        Items.ItemManager.Instance.GetItemByType(Items.ItemType.COIN).soInt.value = (int)playerCoins;
+        Items.ItemManager.Instance.GetItemByType(Items.ItemType.LIFE_PACK).soInt.value = (int)playerHealth;
+
+        // Se você precisar fazer algo mais com as informações carregadas, faça aqui
+    }
+    else
+    {
+        Debug.LogWarning("SaveManager Setup is null. Cannot load last save.");
+    }
+}
+
+
 }

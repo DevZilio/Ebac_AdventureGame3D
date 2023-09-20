@@ -45,5 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _saveSetup:
-    lastLevel: 0
-    playerName: 
+    lastLevel: 2
+    playerName: Paulo
+    coins: 7
+    health: 5
+    lastChekPoint: 2
+    playerStartPosition: {x: 0, y: 0, z: 0}
+  lastLevel: 2
+  startPosition: {fileID: 0}
+  playerStartPosition: {x: 0, y: 0, z: 0}

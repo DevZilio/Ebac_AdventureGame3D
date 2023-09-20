@@ -1,7 +1,12 @@
 {
-    "lastLevel": 2,
+    "lastLevel": 0,
     "playerName": "Paulo",
-    "coins": 15.0,
-    "health": 3.0,
-    "lastChekPoint": 2
+    "coins": 0.0,
+    "health": 0.0,
+    "lastChekPoint": 0,
+    "playerStartPosition": {
+        "x": 523.2999877929688,
+        "y": 0.0,
+        "z": 63.29999923706055
+    }
 }

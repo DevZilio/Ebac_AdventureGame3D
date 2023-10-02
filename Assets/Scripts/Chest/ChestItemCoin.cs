@@ -12,6 +12,9 @@ public class ChestItemCoin : ChestItemBase
     public Vector2 randomRange = new Vector2(-2f, 2f);
     public float tweenEndTime = .5f;
 
+    [Header("Sound")]
+    public SFXType sfxType;
+
     private List<GameObject> _items = new List<GameObject>();
 
     public override void ShowItem()
@@ -33,6 +36,11 @@ public class ChestItemCoin : ChestItemBase
         }
     }
 
+    private void Play()
+    {
+        SFXPool.Instance.Play(sfxType);
+    }
+
 [NaughtyAttributes.Button]
     public override void Collect()
     {
@@ -43,6 +51,7 @@ public class ChestItemCoin : ChestItemBase
             i.transform.DOMoveY(2f, tweenEndTime).SetRelative();
             i.transform.DOScale(0, tweenEndTime/2).SetDelay(tweenEndTime/2);
             ItemManager.Instance.AddByType(ItemType.COIN);
+            Play();
         }
     }
 }

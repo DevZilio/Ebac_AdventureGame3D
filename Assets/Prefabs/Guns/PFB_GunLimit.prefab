@@ -132,6 +132,7 @@ MonoBehaviour:
   positionToShoot: {fileID: 5225729468720882101}
   timeBetweenShoot: 0.2
   speed: 50
+  sfxType: 6
   uiGunUpdaters: []
   maxShoot: 15
   timeToRecharge: 1

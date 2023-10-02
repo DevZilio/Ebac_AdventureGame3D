@@ -8,6 +8,9 @@ public class ActionLifePack : MonoBehaviour
     public KeyCode keyCode = KeyCode.C;
     public SOInt soInt;
 
+    [Header("Audio")]
+    public SFXType sfxType;
+
     private void Start() {
        soInt = ItemManager.Instance.GetItemByType(ItemType.LIFE_PACK).soInt;
     }
@@ -16,18 +19,24 @@ public class ActionLifePack : MonoBehaviour
     {
         if(soInt.value > 0)
         {
-            Debug.Log("RecoverLife");
+            // Debug.Log("RecoverLife");
             ItemManager.Instance.RemoveByType(ItemType.LIFE_PACK);
             PlayerLife.Instance.ResetLife();
+            Play();
         }
     }
 
     private void Update() {
         if(Input.GetKeyDown(keyCode))
         {
-            Debug.Log("Key L");
+            // Debug.Log("Key L");
             RecoverLife();
         }
     
+    }
+
+     private void Play()
+    {
+        SFXPool.Instance.Play(sfxType);
     }
 }

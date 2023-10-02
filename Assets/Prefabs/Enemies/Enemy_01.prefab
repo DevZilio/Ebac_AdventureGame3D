@@ -5954,6 +5954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 8605730476320725794}
   skinnedMeshRenderer: {fileID: 0}
+  colorParameter: _EmissionColor
   color: {r: 1, g: 0, b: 0, a: 1}
   duration: 0.1
 --- !u!136 &4813849128234446173
@@ -6009,6 +6010,10 @@ MonoBehaviour:
   startAnimationDuration: 0.2
   startAnimationEase: 27
   startWithBornAnimation: 1
+  OnKillEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  sfxType: 10
   gunBaseEnemy: {fileID: 1357819002839539392}
 --- !u!1001 &8605730476174990538
 PrefabInstance:

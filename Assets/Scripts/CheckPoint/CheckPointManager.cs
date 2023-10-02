@@ -22,7 +22,9 @@ public class CheckPointManager : Singleton<CheckPointManager>
         }
     }
 
-    public Vector3 GetPositionFromLastCheckPoint()
+   public Vector3 GetPositionFromLastCheckPoint()
+{
+    if (lastCheckPointKey > 0 && checkPoints != null && checkPoints.Count > 0)
     {
         var checkPoint = checkPoints.Find(i => i.key == lastCheckPointKey);
 
@@ -34,7 +36,16 @@ public class CheckPointManager : Singleton<CheckPointManager>
         else
         {
             Debug.LogWarning("Could not find a checkpoint with key " + lastCheckPointKey);
-            return Vector3.zero;
         }
     }
+    else
+    {
+        Debug.LogWarning("No valid checkpoints or lastCheckPointKey is zero.");
+    }
+
+    // Retorne uma posição padrão ou qualquer posição adequada em caso de erro.
+    return Vector3.zero;
 }
+
+}
+ 

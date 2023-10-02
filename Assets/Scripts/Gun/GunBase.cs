@@ -13,6 +13,10 @@ public class GunBase : MonoBehaviour
 
     private Coroutine _currentCoroutine;
 
+     [Header("Sound")]
+    public SFXType sfxType;
+
+
     //Coroutine
    protected virtual IEnumerator ShootCoroutine()
     {
@@ -29,6 +33,7 @@ public class GunBase : MonoBehaviour
         projectile.transform.position = positionToShoot.position;
         projectile.transform.rotation = positionToShoot.rotation;
         projectile.speed = speed;
+        Play();
 
         
     }
@@ -43,5 +48,10 @@ public class GunBase : MonoBehaviour
     {
         if (_currentCoroutine != null) 
         StopCoroutine(_currentCoroutine);
+    }
+   
+    public void Play()
+    {
+        SFXPool.Instance.Play(sfxType);
     }
 }

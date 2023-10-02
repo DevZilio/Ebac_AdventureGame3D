@@ -85,6 +85,7 @@ MonoBehaviour:
   timeToHide: 3
   graphicItem: {fileID: 816907057910229357}
   collider: {fileID: 816907058947914452}
+  sfxType: 1
 --- !u!135 &816907058947914452
 SphereCollider:
   m_ObjectHideFlags: 0

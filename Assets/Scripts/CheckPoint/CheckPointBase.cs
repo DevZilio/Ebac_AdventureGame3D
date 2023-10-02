@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+ 
 public class CheckPointBase : MonoBehaviour
 {
     public MeshRenderer meshRenderer;
@@ -11,13 +11,16 @@ public class CheckPointBase : MonoBehaviour
     private bool checkPointActived = false;
     private string _checkPointKey = "CheckPointKey";
 
+    [Header("Audio")]
+    public SFXType sfxType;
+
     private void OnTriggerEnter(Collider collider)
     {
         if(!checkPointActived && collider.transform.tag == "Player")
         {
 
         CheckCheckPoint();
-        Debug.Log("CheckPoint");
+        // Debug.Log("CheckPoint");
         }
     }
 
@@ -30,6 +33,7 @@ public class CheckPointBase : MonoBehaviour
 [NaughtyAttributes.Button]
     private void TurnItOn()
     {
+        Play();
         meshRenderer.material.SetColor("_EmissionColor", Color.white);
 
     }
@@ -41,23 +45,26 @@ public class CheckPointBase : MonoBehaviour
     }
 
     private void SaveCheckPoint()
-    {
+{
+    CheckPointManager.Instance.SaveCheckPoint(key);
 
-        CheckPointManager.Instance.SaveCheckPoint(key);
-        
-        checkPointActived = true;
-
-         // Salva as informações no SaveManager
+    // Salva as informações no SaveManager
     SaveManager.Instance.SaveItems(); // Salva moedas e saúde
     SaveManager.Instance.SaveLastCheckPoint(); // Salva o último checkpoint
 
-      // Atualiza o número do nível atual
-        int currentLevel = SceneManager.GetActiveScene().buildIndex;
+    // Atualiza o número do nível atual
+    int currentLevel = SceneManager.GetActiveScene().buildIndex;
     SaveManager.Instance.SaveLastLevel(currentLevel); // Salva o último nível
 
     // Chama o método Save() para salvar todas as informações
     SaveManager.Instance.Save();
 
     Debug.Log("Save game on checkpoint");
+}
+
+
+    private void Play()
+    {
+        SFXPool.Instance.Play(sfxType);
     }
 }

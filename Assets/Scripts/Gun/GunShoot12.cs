@@ -30,6 +30,7 @@ public class GunShoot12 : GunShootLimit
 
             // Remove o projétil do pai
             projectile.transform.parent = null;
+            Play();
         }
     }
 }

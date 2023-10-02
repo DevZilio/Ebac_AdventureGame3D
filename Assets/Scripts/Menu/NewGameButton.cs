@@ -6,10 +6,8 @@ public class NewGameButton : MonoBehaviour
 {
     private Button newGameButton;
 
-    public int level1 = 1;
-    
     public SaveManager saveManager; // Atribua o SaveManager a este campo no Inspector
-    public Transform playerStartPosition; // Atribua o objeto playerStartPosition a este campo no Inspector
+    public string firstLevelSceneName = "SCN_Art_3D_v2"; // Substitua pelo nome da cena do Level 1
 
     private void Awake()
     {
@@ -27,14 +25,14 @@ public class NewGameButton : MonoBehaviour
 
     public void StartNewGame()
     {
-        // Configura a posição inicial do jogador no SaveManager
-        saveManager.playerStartPosition = playerStartPosition.position; // Use a posição do objeto playerStartPosition como posição inicial
+        // Faça a transição para o estado GAMEPLAY
+        GameManager.Instance.stateMachine.SwitchState(GameManager.GameStates.GAMEPLAY);
 
+        
         // Crie um novo save
         saveManager.CreateNewSave();
 
         // Carregue a cena do primeiro nível (ou o nível inicial do seu jogo)
-        int firstLevel = 1; // Altere isso para corresponder ao número do primeiro nível
-        SceneManager.LoadScene(firstLevel);
+        SceneManager.LoadScene(firstLevelSceneName);
     }
 }

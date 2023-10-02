@@ -29,6 +29,10 @@ public class PlayerLife : Singleton<PlayerLife>, IDamageable
     public UIFillUpdater uiLifeBarUpdater;
     public float damageMultiply = 1;
 
+     [Header("Sound")]
+    public SFXType sfxType;
+
+
     protected override void Awake()
     {
         base.Awake();
@@ -44,6 +48,11 @@ public class PlayerLife : Singleton<PlayerLife>, IDamageable
     {
         _currentLife = startLife;
         UpdateUI();
+    }
+
+    public void Play()
+    {
+        SFXPool.Instance.Play(sfxType);
     }
 
     protected virtual void Kill()
@@ -72,6 +81,7 @@ public class PlayerLife : Singleton<PlayerLife>, IDamageable
     public void OnDamage(float damage)
     {
         if (flashColors != null) flashColors.ForEach(i => i.Flash());
+        Play();
         EffectsManager.Instance.ChangeVignette();
         ShakeCamera.Instance.Shake();
 

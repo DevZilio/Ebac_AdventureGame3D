@@ -389,3 +389,4 @@ MonoBehaviour:
   coinObject: {fileID: 2156331266250489901, guid: b33ae44a349334cc8874322f9742364e, type: 3}
   randomRange: {x: -0.3, y: 0.3}
   tweenEndTime: 0.5
+  sfxType: 1

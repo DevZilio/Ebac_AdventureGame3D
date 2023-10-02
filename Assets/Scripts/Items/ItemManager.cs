@@ -70,7 +70,7 @@ namespace Items
         {
             AddByType(ItemType.LIFE_PACK);
         }
-
+ 
     }
 
     [System.Serializable]

@@ -11,6 +11,7 @@ public class Player : Singleton<Player>
     public Animator animator;
     public CharacterController characterController;
     public float speed = 1f;
+    public float moveSpeed = 5f;
     public float turnSpeed = 1f;
     public float gravity = 9.8f;
     public float jumpSpeed = 15f;
@@ -28,47 +29,73 @@ public class Player : Singleton<Player>
     [Header("Cloths")]
     public ClothChanger clothChanger;
 
+      [Header("Audio")]
+    public SFXType sfxType;
+
+ // Novos campos para controle de mira
+    public float lookSensitivity = 2.0f;
+    private float rotationX = 0;
+
     void Start()
     {
-        jumpsRemaining = maxJumps; // Defina o número inicial de pulos restantes como o máximo
+        jumpsRemaining = maxJumps;
+        characterController = GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
+        // Captura as entradas de teclado
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        var inputAxiVertical = Input.GetAxis("Vertical");
-        var speedVector = transform.forward * inputAxiVertical * speed;
+        // Calcula o vetor de movimento
+        Vector3 moveDirection = new Vector3(horizontalInput, 0.0f, verticalInput).normalized;
+
+        // Transforma o vetor na direção local do jogador
+        moveDirection = transform.TransformDirection(moveDirection);
+
+        // Aplica a velocidade de movimento
+        characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
+
+        // Calcula a rotação do jogador horizontalmente com base na movimentação do mouse
+        float mouseX = Input.GetAxis("Mouse X");
+        transform.Rotate(Vector3.up * mouseX * lookSensitivity);
+
+        // Calcula a rotação da câmera verticalmente com base na movimentação do mouse
+        float mouseY = Input.GetAxis("Mouse Y");
+        rotationX -= mouseY * lookSensitivity;
+        rotationX = Mathf.Clamp(rotationX, -90, 90);
+        Camera.main.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+
 
         //Jump
         if (characterController.isGrounded)
         {
-            _vSpeed = -0.5f; // Evita que o personagem "cole" ao chão
-            jumpsRemaining = maxJumps; // Reinicia o número de pulos quando estiver no chão
-            groundBufferTimer = groundBufferDuration; // Reinicia o temporizador de buffer de chão
+            _vSpeed = -0.5f;
+            jumpsRemaining = maxJumps;
+            groundBufferTimer = groundBufferDuration;
         }
-        
-        // Atualiza o temporizador de buffer de chão
+
         if (groundBufferTimer > 0)
         {
             groundBufferTimer -= Time.deltaTime;
         }
 
-        // Permite pular mesmo se o jogador saiu do chão recentemente e ainda tem pulos restantes
         if ((jumpsRemaining > 0 || groundBufferTimer > 0) && Input.GetKeyDown(KeyCode.Space))
         {
             _vSpeed = jumpSpeed;
+            Play();
             jumpsRemaining--;
         }
 
         animator.SetBool("Jump", !characterController.isGrounded);
 
-        var isWalking = inputAxiVertical != 0;
+        var isWalking = moveDirection.magnitude > 0; // Verifica se o jogador está andando
         if (isWalking)
         {
             if (Input.GetKey(keyRun))
             {
-                speedVector *= speedRun;
+                moveDirection *= speedRun; // Aplica a velocidade de corrida
                 animator.speed = speedRun;
             }
             else
@@ -78,9 +105,9 @@ public class Player : Singleton<Player>
         }
 
         _vSpeed -= gravity * Time.deltaTime;
-        speedVector.y = _vSpeed;
+        moveDirection.y = _vSpeed;
 
-        characterController.Move(speedVector * Time.deltaTime);
+        characterController.Move(moveDirection * Time.deltaTime);
 
         animator.SetBool("Run", isWalking);
     }
@@ -137,6 +164,11 @@ public void LoadLastSave()
         Debug.LogWarning("SaveManager Setup is null. Cannot load last save.");
     }
 }
+
+ private void Play()
+    {
+        SFXPool.Instance.Play(sfxType);
+    }
 
 
 }

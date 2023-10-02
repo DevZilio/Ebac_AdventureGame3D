@@ -56,6 +56,17 @@
                 },
                 {
                     "name": "",
+                    "id": "3a06b58d-b6b7-482c-afc7-c14dca0f3f59",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "78bc35e7-fedc-4e34-b0b5-bf30d4a2a0d2",
                     "path": "<Keyboard>/1",
                     "interactions": "Press",

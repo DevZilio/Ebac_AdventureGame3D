@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 2
+  m_text: Load Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -93,12 +93,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51
+  m_fontSize: 41.58
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 0
-  m_fontSizeMax: 51
+  m_fontSizeMax: 41.58
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 5170490957712726051}
   - component: {fileID: 693329104349301848}
   - component: {fileID: 7138135950134309684}
-  - component: {fileID: 4652941029268780449}
+  - component: {fileID: 4700460001430692125}
   m_Layer: 5
   m_Name: PFB_BT_Level01
   m_TagString: Untagged
@@ -258,19 +258,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4652941029268780449}
-        m_TargetAssemblyTypeName: LoadSceneHelpe, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 3
+      - m_Target: {fileID: 4700460001430692125}
+        m_TargetAssemblyTypeName: LoadLastSaveButton, Assembly-CSharp
+        m_MethodName: LoadLastSave
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4652941029268780449
+--- !u!114 &4700460001430692125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -279,6 +279,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7150655669975960779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9ea0a37f90814d06990256449e06b98, type: 3}
+  m_Script: {fileID: 11500000, guid: bb47de83c32c34d3287084e09cf35ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

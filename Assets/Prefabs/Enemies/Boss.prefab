@@ -534,7 +534,9 @@ MonoBehaviour:
   particleSystem: {fileID: 3465406751460593301}
   startLife: 10
   destroyOnKill: 1
+  bossCamera: {fileID: 0}
   _currentLife: 0
+  sfxType: 10
 --- !u!136 &3465406750015520228
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -563,6 +565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 5836017142647362553}
   skinnedMeshRenderer: {fileID: 0}
+  colorParameter: _EmissionColor
   color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   duration: 0.1
 --- !u!1 &3465406751305350268

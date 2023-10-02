@@ -16,6 +16,7 @@ public class GunShootLimit : GunBase
     private bool _recharging = false;
 
     public string nameUi;
+    
 
 
     private void Awake()

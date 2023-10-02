@@ -13,7 +13,10 @@ public class ItemCollectableBase : MonoBehaviour
 
     public Collider collider;
 
-   
+    [Header("Sound")]
+    public SFXType sfxType;
+
+    
 
 
     //Identify the collision using a Taga name and call the function Collect()
@@ -25,9 +28,16 @@ public class ItemCollectableBase : MonoBehaviour
             Collect();
         }
     }
+
+    private void Play()
+    {
+        SFXPool.Instance.Play(sfxType);
+    }
+
     // Hide the main renderer sprit, starts particle system and wait to end animation
     protected virtual void Collect()
     {
+        Play();
         if(collider != null) collider.enabled = false;
         if (graphicItem != null) graphicItem.SetActive(false);
         Invoke("HideObject", timeToHide);

@@ -36,6 +36,11 @@ namespace Enemy
         public UnityEvent OnKillEvent;
 
 
+     [Header("Sound")]
+    public SFXType sfxType;
+
+
+
 
 
         private void Awake()
@@ -80,6 +85,7 @@ namespace Enemy
             {
                 if (flashColor != null) flashColor.Flash();
                 if (particleSystem != null) particleSystem.Emit(15);
+                Play();
 
                 transform.position -= transform.forward;
 
@@ -145,5 +151,10 @@ namespace Enemy
             _animationBase.PlayAnimationByTrigger (animationType);
         }
 #endregion
+    
+    public void Play()
+    {
+        SFXPool.Instance.Play(sfxType);
+    }
     }
 }

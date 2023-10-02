@@ -19,6 +19,8 @@ public class SaveManager : Singleton<SaveManager>
 
     public Vector3 playerStartPosition;
 
+   
+
     protected override void Awake()
     {
         base.Awake();
@@ -115,6 +117,17 @@ public class SaveManager : Singleton<SaveManager>
 
         FileLoaded?.Invoke(_saveSetup);
     }
+
+  public int GetSavedCoins()
+{
+    return (int)_saveSetup.coins;
+}
+
+public int GetSavedLifePacks()
+{
+    return (int)_saveSetup.health;
+}
+
 
     #region DEBUG
     [NaughtyAttributes.Button]

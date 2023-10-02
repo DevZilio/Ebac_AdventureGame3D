@@ -22,6 +22,11 @@ public class HealthBase : MonoBehaviour, IDamageable
     // public Action<HealthBase> OnDamage;
     public Action<HealthBase> OnKill;
 
+
+     [Header("Sound")]
+    public SFXType sfxType;
+
+
     public void Awake()
     {
         Init();
@@ -57,6 +62,7 @@ public class HealthBase : MonoBehaviour, IDamageable
     {
         if (flashColor != null) flashColor.Flash();
         if (particleSystem != null) particleSystem.Emit(15);
+        Play();
 
         // transform.position -= transform.forward;
         _currentLife -= damage;
@@ -78,4 +84,8 @@ public class HealthBase : MonoBehaviour, IDamageable
     }
 #endregion
 
+    public void Play()
+    {
+        SFXPool.Instance.Play(sfxType);
+    }
 }

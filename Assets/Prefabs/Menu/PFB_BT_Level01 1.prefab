@@ -135,8 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68047f1b62bae4bb09cffdb8b02c9c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveManager: {fileID: 7844128923624708048, guid: 34a0c9ca24347471aa0f7b9bd7bd2fd3, type: 3}
-  playerStartPosition: {fileID: 9191301450250353023, guid: d27675bc38c0049a381712471bbe3647, type: 3}
+  saveManager: {fileID: 0}
   firstLevelSceneName: SCN_Level1
 --- !u!1 &7277660907846723970
 GameObject:

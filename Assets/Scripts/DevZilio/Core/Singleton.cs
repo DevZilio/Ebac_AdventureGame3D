@@ -9,13 +9,27 @@ namespace DevZilio.Core.Singleton
     {
         public static T Instance;
 
+        private bool _persistent = false;
+
         protected virtual void Awake()
         {
             if (Instance == null)
                 Instance = GetComponent<T>();
             else
                 Destroy(gameObject);
+
+            if(_persistent)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
         }
+
+        public Singleton(bool persistent)
+        {
+            _persistent = persistent;
+        }
+
+        public Singleton(){}
 
     }
 }

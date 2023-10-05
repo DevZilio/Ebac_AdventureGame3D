@@ -19,6 +19,11 @@ public class SaveManager : Singleton<SaveManager>
 
     public Vector3 playerStartPosition;
 
+    public SaveManager() : base(true)
+    {
+        
+    }
+
    
 
     protected override void Awake()

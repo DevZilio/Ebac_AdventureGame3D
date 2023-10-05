@@ -379,6 +379,17 @@ Transform:
   m_Father: {fileID: 2121569315}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &727964696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7844128923624708048, guid: 34a0c9ca24347471aa0f7b9bd7bd2fd3, type: 3}
+  m_PrefabInstance: {fileID: 255840518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18906794d6fad474ab786bc8f6dd5705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &794742659 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4104759086992654088, guid: 2b80d19c5ff4642219c101f235c0f59e, type: 3}
@@ -1024,6 +1035,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_BT_NewGame
       objectReference: {fileID: 0}
+    - target: {fileID: 5531311877697967773, guid: 46b68a56d43664b368f7224f84a66a05, type: 3}
+      propertyPath: saveManager
+      value: 
+      objectReference: {fileID: 727964696}
     - target: {fileID: 5747281837305377787, guid: 46b68a56d43664b368f7224f84a66a05, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

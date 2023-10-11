@@ -37,6 +37,7 @@ public class Level1 : MonoBehaviour
     
     {
         SpawnPlayer();
+        
     }
 
     private void SpawnPlayer()

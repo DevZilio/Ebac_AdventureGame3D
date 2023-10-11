@@ -22,7 +22,7 @@ namespace Items
            LoadItemsFromSave();
        }
 
-       private void LoadItemsFromSave()
+       public void LoadItemsFromSave()
        {
            AddByType(ItemType.COIN, (int) SaveManager.Instance.Setup.coins);
            AddByType(ItemType.LIFE_PACK, (int) SaveManager.Instance.Setup.health);

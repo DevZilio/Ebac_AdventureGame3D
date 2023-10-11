@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DevZilio.Core.Singleton;
+using UnityEngine.Audio;
 
 public class SoundManager : Singleton<SoundManager>
 {
@@ -47,6 +48,7 @@ public class MusicSetup
 {
     public MusicType musicType;
     public AudioClip audioClip;
+    public AudioMixerGroup audioMixerGroup;
 
 }
 
@@ -70,5 +72,6 @@ public class SFXSetup
 {
     public SFXType sfxType;
     public AudioClip audioClip;
+    public AudioMixerGroup audioMixerGroup;
 
 }

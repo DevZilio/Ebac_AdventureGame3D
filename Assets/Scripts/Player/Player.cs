@@ -36,10 +36,14 @@ public class Player : Singleton<Player>
     public float lookSensitivity = 2.0f;
     private float rotationX = 0;
 
+    public Transform cameraTransform;
+   
+
     void Start()
     {
         jumpsRemaining = maxJumps;
         characterController = GetComponent<CharacterController>();
+        
     }
 
     void Update()
@@ -65,7 +69,7 @@ public class Player : Singleton<Player>
         float mouseY = Input.GetAxis("Mouse Y");
         rotationX -= mouseY * lookSensitivity;
         rotationX = Mathf.Clamp(rotationX, -90, 90);
-        Camera.main.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        Camera.main.transform.localRotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0), 100 * Time.deltaTime);
 
 
         //Jump

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class HealthBase : MonoBehaviour, IDamageable
 {
@@ -25,6 +26,7 @@ public class HealthBase : MonoBehaviour, IDamageable
 
      [Header("Sound")]
     public SFXType sfxType;
+     public AudioMixerGroup audioMixerGroup;
 
 
     public void Awake()
@@ -45,7 +47,7 @@ public class HealthBase : MonoBehaviour, IDamageable
     protected virtual void Kill()
     {
         if (destroyOnKill) Destroy(gameObject, 3f);
-        bossCamera.SetActive(false);
+        // bossCamera.SetActive(false);
 
         OnKill?.Invoke(this);
     }

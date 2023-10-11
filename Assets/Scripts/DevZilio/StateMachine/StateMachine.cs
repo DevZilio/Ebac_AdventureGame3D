@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
-
+ 
 namespace DevZilio.StateMachine
 {
     public class StateMachine<T> where T : System.Enum

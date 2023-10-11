@@ -894,9 +894,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8998822957139261101}
     m_Modifications:
+    - target: {fileID: 3465406750015520228, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
+      propertyPath: m_Radius
+      value: 6.549469
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465406750015520228, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
+      propertyPath: m_Center.x
+      value: -0.5015564
+      objectReference: {fileID: 0}
     - target: {fileID: 3465406750015520232, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465406750015520233, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
+      propertyPath: attackAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465406750015520233, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
+      propertyPath: timeBetweenAttack
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3465406750015520233, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -974,6 +990,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3465406750015520235, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
+      propertyPath: startLife
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465406750015520235, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
+      propertyPath: audioMixerGroup
+      value: 
+      objectReference: {fileID: 7683719173564658036, guid: 444625260a8904ba78d10b263ed482ed, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
 --- !u!23 &2019889115156894286 stripped

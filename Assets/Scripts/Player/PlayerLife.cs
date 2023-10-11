@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Audio;
 using DevZilio.Core.Singleton;
 
 public class PlayerLife : Singleton<PlayerLife>, IDamageable
@@ -31,6 +32,7 @@ public class PlayerLife : Singleton<PlayerLife>, IDamageable
 
      [Header("Sound")]
     public SFXType sfxType;
+    public AudioMixerGroup audioMixerGroup;
 
 
     protected override void Awake()

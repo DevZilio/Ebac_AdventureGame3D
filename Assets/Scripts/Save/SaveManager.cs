@@ -42,12 +42,13 @@ public class SaveManager : Singleton<SaveManager>
         _saveSetup.lastChekPoint = 0;        
         _saveSetup.playerStartPosition = new Vector3(startPosition.transform.position.x, startPosition.transform.position.y, startPosition.transform.position.z);
            
-         Save();
+        //  Save();
     }
 
     private void Start()
     {
-        LoadFile();
+        // LoadFile();
+        CreateNewSave();
     }
 
     #region SAVE
@@ -112,6 +113,7 @@ public class SaveManager : Singleton<SaveManager>
             // lastCheckPoint = _saveSetup.lastChekPoint;
             
             Debug.Log("File loaded successfully from: " + _path);
+            Debug.Log(fileLoaded);
         }
         else
         {

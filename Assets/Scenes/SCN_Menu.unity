@@ -813,6 +813,18 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1649461940503209342, guid: faab2ee221f744af4823d704f1c50387, type: 3}
   m_PrefabInstance: {fileID: 6331906675499140201}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4700460001430692124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3810969840353659042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 027c5262cc9ff44a69c388cfead0abc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4885355171155048767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1013,11 +1025,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7138135950134309684, guid: faab2ee221f744af4823d704f1c50387, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4700460001430692124}
+    - target: {fileID: 7138135950134309684, guid: faab2ee221f744af4823d704f1c50387, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadLastSave
+      objectReference: {fileID: 0}
     - target: {fileID: 7150655669975960779, guid: faab2ee221f744af4823d704f1c50387, type: 3}
       propertyPath: m_Name
       value: PFB_BT_LoadGame
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4700460001430692125, guid: faab2ee221f744af4823d704f1c50387, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: faab2ee221f744af4823d704f1c50387, type: 3}
 --- !u!224 &7521404028910930992 stripped
 RectTransform:
@@ -1039,6 +1060,10 @@ PrefabInstance:
       propertyPath: saveManager
       value: 
       objectReference: {fileID: 727964696}
+    - target: {fileID: 5531311877697967773, guid: 46b68a56d43664b368f7224f84a66a05, type: 3}
+      propertyPath: firstLevelSceneName
+      value: SCN_Prototype
+      objectReference: {fileID: 0}
     - target: {fileID: 5747281837305377787, guid: 46b68a56d43664b368f7224f84a66a05, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

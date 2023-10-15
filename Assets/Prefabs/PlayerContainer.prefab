@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1676285531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1676285532}
+  m_Layer: 0
+  m_Name: TargetCam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1676285532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676285531}
+  m_LocalRotation: {x: -0.019197362, y: 0, z: 0, w: 0.9998157}
+  m_LocalPosition: {x: 0.16, y: 2, z: 6.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7019908004507023859}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -2.2, y: 0, z: 0}
 --- !u!1 &7019908004507023821
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,6 +71,7 @@ Transform:
   - {fileID: 7019908006216233993}
   - {fileID: 7019908005614841602}
   - {fileID: 7019908005483521168}
+  - {fileID: 1676285532}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58,17 +90,16 @@ MonoBehaviour:
   animator: {fileID: 197649343039416152}
   characterController: {fileID: 7019908004507023856}
   speed: 25
-  moveSpeed: 25
-  turnSpeed: 250
   gravity: 24.5
   jumpSpeed: 20
   maxJumps: 2
-  groundBufferDuration: 0.3
+  groundBufferDuration: 0.8
   keyRun: 304
-  speedRun: 1.5
+  speedRun: 2
   clothChanger: {fileID: 7019908004507023861}
   sfxType: 5
   lookSensitivity: 30
+  cameraTransform: {fileID: 0}
 --- !u!143 &7019908004507023856
 CharacterController:
   m_ObjectHideFlags: 0
@@ -80,8 +111,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 3.03
-  m_Radius: 0.62
+  m_Height: 3.88
+  m_Radius: 0.91
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

@@ -11,12 +11,10 @@ public class Player : Singleton<Player>
     public Animator animator;
     public CharacterController characterController;
     public float speed = 1f;
-    public float moveSpeed = 5f;
-    public float turnSpeed = 1f;
     public float gravity = 9.8f;
     public float jumpSpeed = 15f;
     public int maxJumps = 2; // Número máximo de pulos permitidos
-    private int jumpsRemaining = 0; // Número de pulos restantes
+    public int jumpsRemaining = 0; // Número de pulos restantes
 
     private float _vSpeed = 0f;
     private float groundBufferTimer = 0f;
@@ -59,7 +57,7 @@ public class Player : Singleton<Player>
         moveDirection = transform.TransformDirection(moveDirection);
 
         // Aplica a velocidade de movimento
-        characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
+        characterController.Move(moveDirection * speed * Time.deltaTime);
 
         // Calcula a rotação do jogador horizontalmente com base na movimentação do mouse
         float mouseX = Input.GetAxis("Mouse X");
@@ -90,10 +88,12 @@ public class Player : Singleton<Player>
             _vSpeed = jumpSpeed;
             Play();
             jumpsRemaining--;
+            animator.SetBool("Jump", !characterController.isGrounded);
         }
+      
 
-        animator.SetBool("Jump", !characterController.isGrounded);
 
+        //run
         var isWalking = moveDirection.magnitude > 0; // Verifica se o jogador está andando
         if (isWalking)
         {

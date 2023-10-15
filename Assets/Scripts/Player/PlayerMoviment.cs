@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//NAO ESTA EM USO---------------------------------------------------------
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5.0f;

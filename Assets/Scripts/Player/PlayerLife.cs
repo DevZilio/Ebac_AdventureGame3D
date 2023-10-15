@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DevZilio.Core.Singleton;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
-using DevZilio.Core.Singleton;
 
 public class PlayerLife : Singleton<PlayerLife>, IDamageable
 {
@@ -30,16 +30,36 @@ public class PlayerLife : Singleton<PlayerLife>, IDamageable
     public UIFillUpdater uiLifeBarUpdater;
     public float damageMultiply = 1;
 
-     [Header("Sound")]
+    [Header("Sound")]
     public SFXType sfxType;
     public AudioMixerGroup audioMixerGroup;
+
+    private CharacterController _characterController;
 
 
     protected override void Awake()
     {
         base.Awake();
+        _characterController = GetComponent<CharacterController>();
         Init();
     }
+
+    bool firstFrame = true;
+    private void Update()
+    {
+        if (firstFrame)
+        {
+            LoadRespawnPoint();
+            firstFrame = false;
+        }
+    }
+
+
+    private void LoadRespawnPoint()
+    {
+        Respawn();
+    }
+
 
     public void Init()
     {
@@ -78,7 +98,7 @@ public class PlayerLife : Singleton<PlayerLife>, IDamageable
     }
 
 
-#region DAMAGE
+    #region DAMAGE
 
     public void OnDamage(float damage)
     {
@@ -99,24 +119,24 @@ public class PlayerLife : Singleton<PlayerLife>, IDamageable
 
     public void Damage(float damage)
     {
-        OnDamage (damage);
+        OnDamage(damage);
     }
 
     public void Damage(float damage, Vector3 dir)
     {
-        OnDamage (damage);
+        OnDamage(damage);
         transform.DOMove(transform.position - dir, .1f);
     }
-#endregion
+    #endregion
 
 
 
-#region LIFE
+    #region LIFE
     private void UpdateUI()
     {
         if (uiLifeBarUpdater != null)
         {
-            uiLifeBarUpdater.UpdateValue((float) _currentLife / startLife);
+            uiLifeBarUpdater.UpdateValue((float)_currentLife / startLife);
             Debug.Log("Update PlayerLife");
         }
     }
@@ -126,9 +146,11 @@ public class PlayerLife : Singleton<PlayerLife>, IDamageable
     {
         if (CheckPointManager.Instance.HasCheckPoint())
         {
+            _characterController.enabled = false;
             transform.position =
                 CheckPointManager.Instance.GetPositionFromLastCheckPoint();
-                Debug.Log("Respawned at checkpoint " + CheckPointManager.Instance.lastCheckPointKey);
+            Debug.Log("Respawned at checkpoint " + CheckPointManager.Instance.lastCheckPointKey);
+            _characterController.enabled = true;
         }
     }
 
@@ -143,9 +165,9 @@ public class PlayerLife : Singleton<PlayerLife>, IDamageable
     }
 
 
-#endregion
+    #endregion
 
-public void ChangeDamageMultiply(float damage, float duration)
+    public void ChangeDamageMultiply(float damage, float duration)
     {
         StartCoroutine(ChangeDamageMultiplyCoroutine(damageMultiply, duration));
     }
@@ -154,8 +176,7 @@ public void ChangeDamageMultiply(float damage, float duration)
     {
         this.damageMultiply = damageMultiply;
         yield return new WaitForSeconds(duration);
-         this.damageMultiply = 1;
+        this.damageMultiply = 1;
     }
 
 }
- 

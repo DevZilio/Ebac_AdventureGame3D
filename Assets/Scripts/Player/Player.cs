@@ -29,6 +29,7 @@ public class Player : Singleton<Player>
 
       [Header("Audio")]
     public SFXType sfxType;
+    
 
  // Novos campos para controle de mira
     public float lookSensitivity = 2.0f;
@@ -88,7 +89,7 @@ public class Player : Singleton<Player>
             _vSpeed = jumpSpeed;
             Play();
             jumpsRemaining--;
-            animator.SetBool("Jump", !characterController.isGrounded);
+            // animator.SetBool("Jump", !characterController.isGrounded);
         }
       
 

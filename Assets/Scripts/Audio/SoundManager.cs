@@ -1,33 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using DevZilio.Core.Singleton;
+using UnityEngine;
 using UnityEngine.Audio;
 
 public class SoundManager : Singleton<SoundManager>
 {
- public List<MusicSetup> musicSetups;
- public List<SFXSetup> sfxSetups;
+    public List<MusicSetup> musicSetups;
+    public List<SFXSetup> sfxSetups;
 
-public AudioSource musicSource;
+    public AudioSource musicSource;
+    public AudioSource sfxSource;
 
-public void PlayMusicByType(MusicType musicType)
-{
-    var music = GetMusicByType(musicType);
-    musicSource.clip = music.audioClip;
-    musicSource.Play();
-}
+    public void PlayMusicByType(MusicType musicType)
+    {
+        var music = GetMusicByType(musicType);
+        musicSource.clip = music.audioClip;
+        musicSource.outputAudioMixerGroup = music.audioMixerGroup;
+        musicSource.Play();
+    }
 
-public MusicSetup GetMusicByType(MusicType musicType)
-{
-    return musicSetups.Find(i => i.musicType == musicType);
-}
+    public void PlaySFXByType(SFXType sfxType)
+    {
+        var sfx = GetSFXByType(sfxType);
+        sfxSource.clip = sfx.audioClip;
+        sfxSource.outputAudioMixerGroup = sfx.audioMixerGroup; // Define o mixer para o efeito sonoro
+        sfxSource.Play();
+    }
+
+    public MusicSetup GetMusicByType(MusicType musicType)
+    {
+        return musicSetups.Find(i => i.musicType == musicType);
+    }
 
 
-public SFXSetup GetSFXByType(SFXType sfxType)
-{
-    return sfxSetups.Find(i => i.sfxType == sfxType);
-}
+    public SFXSetup GetSFXByType(SFXType sfxType)
+    {
+        return sfxSetups.Find(i => i.sfxType == sfxType);
+    }
 
 
 

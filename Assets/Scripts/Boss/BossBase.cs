@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DevZilio.StateMachine;
+using UnityEngine.Events;
 using UnityEngine;
 using DG.Tweening;
 
@@ -22,6 +23,8 @@ namespace Boss
         public float startAnimationDuration = .5f;
         public Ease startAnimationEase = Ease.OutBack;
         
+        [Header("Events")]
+        public UnityEvent OnKillEvent;
 
        
         [Header("Attack")]

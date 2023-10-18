@@ -11,8 +11,7 @@ public class ButtonController : MonoBehaviour
         if (Input.GetKeyDown(keyToPress))
         {
             yourButton.onClick.Invoke(); // Ativa o evento de clique do botão
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            
         }
     }
 }

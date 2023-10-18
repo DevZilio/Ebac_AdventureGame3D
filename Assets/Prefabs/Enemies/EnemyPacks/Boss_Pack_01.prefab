@@ -946,6 +946,34 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[7]
       value: 
       objectReference: {fileID: 8998822956453027394}
+    - target: {fileID: 3465406750015520233, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
+      propertyPath: OnKillEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465406750015520233, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
+      propertyPath: OnKillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465406750015520233, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
+      propertyPath: OnKillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465406750015520233, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
+      propertyPath: OnKillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465406750015520233, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
+      propertyPath: OnKillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465406750015520233, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
+      propertyPath: OnKillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465406750015520233, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
+      propertyPath: OnKillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3465406750015520234, guid: 8bf76a5123aab46b6ad4fe667c873603, type: 3}
       propertyPath: m_RootOrder
       value: 0

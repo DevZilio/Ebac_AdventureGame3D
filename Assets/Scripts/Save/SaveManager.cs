@@ -75,6 +75,7 @@ public class SaveManager : Singleton<SaveManager>
         Debug.Log("Checkpoint " + _saveSetup.lastChekPoint + " updated");
     }
 
+// --------------------------PRECISA SER CORRIGIDO--------------------------
     public void SaveLastLevel(int level)
     {
         _saveSetup.lastLevel = level;

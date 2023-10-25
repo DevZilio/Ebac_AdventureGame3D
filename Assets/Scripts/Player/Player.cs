@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
-using DevZilio.Core.Singleton;
 using Cloth;
+using DevZilio.Core.Singleton;
 using UnityEngine;
 
 public class Player : Singleton<Player>
@@ -27,22 +27,22 @@ public class Player : Singleton<Player>
     [Header("Cloths")]
     public ClothChanger clothChanger;
 
-      [Header("Audio")]
+    [Header("Audio")]
     public SFXType sfxType;
-    
 
- // Novos campos para controle de mira
+
+    // Novos campos para controle de mira
     public float lookSensitivity = 2.0f;
     private float rotationX = 0;
 
     public Transform cameraTransform;
-   
+
 
     void Start()
     {
         jumpsRemaining = maxJumps;
         characterController = GetComponent<CharacterController>();
-        
+
     }
 
     void Update()
@@ -68,7 +68,8 @@ public class Player : Singleton<Player>
         float mouseY = Input.GetAxis("Mouse Y");
         rotationX -= mouseY * lookSensitivity;
         rotationX = Mathf.Clamp(rotationX, -90, 90);
-        Camera.main.transform.localRotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0), 100 * Time.deltaTime);
+        Camera.main.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+
 
 
         //Jump
@@ -91,7 +92,7 @@ public class Player : Singleton<Player>
             jumpsRemaining--;
             // animator.SetBool("Jump", !characterController.isGrounded);
         }
-      
+
 
 
         //run
@@ -146,31 +147,31 @@ public class Player : Singleton<Player>
     }
 
 
-public void LoadLastSave()
-{
-    if (SaveManager.Instance.Setup != null)
+    public void LoadLastSave()
     {
-        // Carregue as informações relevantes do SaveManager
-        int lastLevel = SaveManager.Instance.Setup.lastLevel;
-        int lastCheckpointKey = SaveManager.Instance.Setup.lastChekPoint;
-        float playerHealth = SaveManager.Instance.Setup.health;
-        float playerCoins = SaveManager.Instance.Setup.coins;
+        if (SaveManager.Instance.Setup != null)
+        {
+            // Carregue as informações relevantes do SaveManager
+            int lastLevel = SaveManager.Instance.Setup.lastLevel;
+            int lastCheckpointKey = SaveManager.Instance.Setup.lastChekPoint;
+            float playerHealth = SaveManager.Instance.Setup.health;
+            float playerCoins = SaveManager.Instance.Setup.coins;
 
-        // Ajuste as informações do jogador de acordo com o carregamento
-        // Por exemplo, você pode atualizar a posição, saúde e moedas aqui
-        transform.position = CheckPointManager.Instance.GetPositionFromLastCheckPoint();
-        Items.ItemManager.Instance.GetItemByType(Items.ItemType.COIN).soInt.value = (int)playerCoins;
-        Items.ItemManager.Instance.GetItemByType(Items.ItemType.LIFE_PACK).soInt.value = (int)playerHealth;
+            // Ajuste as informações do jogador de acordo com o carregamento
+            // Por exemplo, você pode atualizar a posição, saúde e moedas aqui
+            transform.position = CheckPointManager.Instance.GetPositionFromLastCheckPoint();
+            Items.ItemManager.Instance.GetItemByType(Items.ItemType.COIN).soInt.value = (int)playerCoins;
+            Items.ItemManager.Instance.GetItemByType(Items.ItemType.LIFE_PACK).soInt.value = (int)playerHealth;
 
-        // Se você precisar fazer algo mais com as informações carregadas, faça aqui
+            // Se você precisar fazer algo mais com as informações carregadas, faça aqui
+        }
+        else
+        {
+            Debug.LogWarning("SaveManager Setup is null. Cannot load last save.");
+        }
     }
-    else
-    {
-        Debug.LogWarning("SaveManager Setup is null. Cannot load last save.");
-    }
-}
 
- private void Play()
+    private void Play()
     {
         SFXPool.Instance.Play(sfxType);
     }

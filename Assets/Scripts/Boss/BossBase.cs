@@ -94,10 +94,20 @@ public virtual void Update()
 
 IEnumerator GoToPointCoroutine(Transform t, Action onArrive = null)
 {
-    while(Vector3.Distance(transform.position, t.position) > 1f)
+    var initialPosition = transform.position;
+    var finalPosition = t.position;
+    var direction = (finalPosition - initialPosition);
+    var distance = direction.magnitude;
+    direction.Normalize();
+    var animationTime = (transform.position - t.position).magnitude/speed;
+
+    float counter = 0;
+
+    while(counter < animationTime)
     {
-        transform.position = Vector3.MoveTowards(transform.position, t.position, Time.deltaTime * speed);
-        yield return new WaitForEndOfFrame();
+        yield return null;
+        counter += Time.deltaTime;
+        transform.position = initialPosition + direction * distance * (counter/animationTime);
     }
 
     onArrive?.Invoke();

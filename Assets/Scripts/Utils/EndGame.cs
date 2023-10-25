@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
 public class EndGame : MonoBehaviour
 {
@@ -11,26 +11,27 @@ public class EndGame : MonoBehaviour
 
     public int currentLevel;
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other)
+    {
         Player p = other.GetComponent<Player>();
 
-        if (!_endGame && p!=null)
+        if (!_endGame && p != null)
         {
             ShowEndGame();
         }
     }
 
-private void ShowEndGame()
-{
-    _endGame = true;
- endGameObjects.ForEach(i=> i.SetActive(true));
+    private void ShowEndGame()
+    {
+        _endGame = true;
+        endGameObjects.ForEach(i => i.SetActive(true));
 
- foreach (var i  in endGameObjects)
+        foreach (var i in endGameObjects)
 
- {
- i.SetActive(true);
- i.transform.DOScale(0, .2f).SetEase(Ease.OutBack).From();   
- SaveManager.Instance.SaveLastLevel(currentLevel); 
- }
-}
+        {
+            i.SetActive(true);
+            i.transform.DOScale(0, .2f).SetEase(Ease.OutBack).From();
+            SaveManager.Instance.SaveLastLevel(currentLevel);
+        }
     }
+}
